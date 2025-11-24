@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реклама</title>
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        #content {
+            text-align: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        #content img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #warningText {
+            font-size: 60px;
+            font-weight: bold;
+            position: absolute;
+            bottom: 50%;
+            width: 100%;
+            text-align: center;
+            color: darkred;
+            text-shadow: 0 0 10px black;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div id="content">
+    <img id="gifImage" src="" alt="">
+    <audio id="audioPlayer"></audio>
+</div>
+
+<div id="warningText">Не переходьте за сумнівними посиланнями</div>
+
+<script>
+    
+    function goFullscreen() {
+        let el = document.documentElement;
+        if (el.requestFullscreen) el.requestFullscreen();
+        else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+        else if (el.msRequestFullscreen) el.msRequestFullscreen();
+    }
+
+    goFullscreen();
+
+
+    
+    const img = document.getElementById("gifImage");
+    const audio = document.getElementById("audioPlayer");
+    const warning = document.getElementById("warningText");
+
+
+    
+    function stage1() {
+        img.src = "static/sc.gif";
+        audio.src = "static/sound111.mp3";
+        audio.play();
+    }
+
+    function stage2() {
+        img.src = "static/code.gif";
+        audio.src = "static/sound2.mp3";
+        audio.play();
+        warning.style.display = "block";
+    }
+
+    function stage3() {
+        img.src = "static/lero.jpg";
+        audio.src = "static/sound3.mp3";
+        audio.play();
+        warning.style.display = "none";
+    }
+
+ 
+    function stage4() {
+        window.location.href = "pagenew2.html"; 
+    }
+
+
+  
+    stage1();
+
+    setTimeout(stage2, 1300);
+    setTimeout(stage3, 5000);
+    setTimeout(stage4, 10000);
+</script>
+
+</body>
+</html>
